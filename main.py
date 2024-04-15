@@ -1,19 +1,20 @@
 import csv
+import os
 import re
-from pathlib import Path
 import tkinter as tk
 from tkinter import Label, Entry, Button, messagebox, scrolledtext
 
 
-BASE_PATH = Path.cwd()
-CSV_FILE_PATH = BASE_PATH / "Tranzistor.csv"
+CSV_FILE_PATH = os.path.join(".", "_internal", "DB", "Tranzistor.csv")
+ICON_FILE = os.path.join(".", "_internal", "logo", "logo.ico")
 
 
 class TranzistorDirectoryApp(tk.Tk):
     def __init__(self, storage: list[dict]):
         super().__init__()
         self.title('Справочник транзисторов')
-        self.geometry('640x520')
+        self.geometry('640x480')
+        self.iconbitmap(ICON_FILE)
         self.storage = storage
 
         Label(self, text="Введите наименование транзистора:").pack(pady=10)
